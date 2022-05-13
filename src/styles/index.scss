@@ -2,3 +2,14 @@
 @import 'base/reset';
 @import 'base/more';
 @import 'base/fonts';
+
+:root,
+:root.light {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+}
+
+:root.dark {
+  --bg-color: #222222;
+  --text-color: #eeeeee;
+}

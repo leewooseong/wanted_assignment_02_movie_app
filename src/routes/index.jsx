@@ -1,20 +1,26 @@
-import styles from './Routes.module.scss'
-import MovieSearch from './MovieSearch'
+import { Route, Routes } from 'react-router-dom'
 import MovieFavorite from './MovieFavorite'
-import { Routes, Route } from 'react-router-dom'
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue } from 'recoil'
+import MovieSearch from './MovieSearch'
+import Navigation from '../component/Navigation'
+import styles from './Routes.module.scss'
 
 const App = () => {
   return (
-    <RecoilRoot>
-      <div className={styles.app}>
+    <div className={styles.app}>
+      <section className={styles.introducePage}>
+        <h2>
+          Grip Company <span>Assignment</span>
+          <span className={styles.name}>by 이 우 성</span>
+        </h2>
+      </section>
+      <section className={styles.contentLayout}>
         <Routes>
           <Route path='/' element={<MovieSearch />} />
-          <Route path='/favorite' element={<MovieFavorite />} />
-          <Route />
+          <Route path='favorite' element={<MovieFavorite />} />
+          {/* <Route path='*' element={<div>404</div>} /> */}
         </Routes>
-      </div>
-    </RecoilRoot>
+      </section>
+    </div>
   )
 }
 

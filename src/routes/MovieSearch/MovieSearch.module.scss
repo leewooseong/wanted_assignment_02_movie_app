@@ -1,0 +1,10 @@
+@use '/src/styles/constants/colors';
+
+.movieSearchCont {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  height: 100vh;
+  overflow-y: scroll;
+}

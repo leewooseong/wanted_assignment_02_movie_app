@@ -5,4 +5,31 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background-color: colors.$GRAY2;
+}
+
+.introducePage {
+  width: 420px;
+  padding: 0 20px;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: left;
+
+  & h2 .name {
+    margin-top: 15%;
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  & span {
+    display: block;
+  }
+}
+
+.contentLayout {
+  position: relative;
+  width: 420px;
+  min-width: 420px;
+  height: 100vh;
+  background-color: colors.$WHITE;
 }

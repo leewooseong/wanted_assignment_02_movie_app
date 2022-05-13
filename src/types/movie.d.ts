@@ -9,7 +9,7 @@ interface IMovieSearch {
 
 // 요청이 성공한 경우 RES
 export interface IMovieAPIRes {
-  Search: IMovieAPIRes[]
+  Search: IMovieSearch[]
   totalResults: string
   Response: string
 }
