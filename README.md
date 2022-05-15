@@ -1,6 +1,6 @@
 # Movie app(Search & favorite)
 ## 최종 결과 사이트
-- https://wanted-assignment-01-movie-app.vercel.app/
+- https://wanted-assignment-02-movie-app.vercel.app/
 ## 디렉토리 구조
 ```
 src
@@ -72,4 +72,4 @@ export interface IMovieAPIRes {
 
 
 ## 실행 화면
-<img src='https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f5a1149b-4e2f-479f-8cdb-d938e9c978ff/grip.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220515%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220515T065852Z&X-Amz-Expires=86400&X-Amz-Signature=8da211ba486d2fcd5d748ab021a72591aeb857c873d31b0fc6d3a3069faada7b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22grip.gif%22&x-id=GetObject'>
+<img src='https://user-images.githubusercontent.com/42796944/168466594-868685c8-ede0-4e20-b306-30e932103b55.gif'>
