@@ -37,7 +37,6 @@ const isAxiosError = <E>(err: unknown | AxiosError<E>): err is AxiosError => {
 }
 
 const isValidResponse = (axiosRes: IMovieAPIRes | IMovieAPIErrorRes): axiosRes is IMovieAPIRes => {
-  //   return (axiosRes as IMovieAPIRes).Response === 'True'
   return axiosRes.Response === 'True'
 }
 

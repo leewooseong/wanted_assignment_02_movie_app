@@ -1,10 +1,8 @@
-import { LegacyRef, MutableRefObject, useRef } from 'react'
-import { useMount, useState, useEffect, useGetData } from 'hooks'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { MutableRefObject, useRef } from 'react'
+import { useGetData } from 'hooks'
+import { useRecoilValue } from 'recoil'
 
-import { movieListState, searchWordState, pageNumState, loadingState } from 'states/movie'
-import { getMovieApi } from 'services/movie'
-import { isValidResponse } from 'utils/axios'
+import { movieListState, searchWordState, pageNumState } from 'states/movie'
 import { useLoadingMore } from '../../hooks/index'
 
 import Search from '../../component/Search/index'

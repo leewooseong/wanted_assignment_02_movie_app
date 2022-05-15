@@ -1,36 +1,18 @@
 import cx from 'classnames'
 import store from 'storejs'
 
-import { useRecoilState, useRecoilValue } from 'hooks/state'
+import { useRecoilState } from 'hooks/state'
 import { modalState } from 'states/movie'
 import { IMovieSearch } from 'types/movie'
 import { clickedMovieState, movieListState } from '../../states/movie'
 
 import styles from './Modal.module.scss'
-import { prependListener } from 'process'
-import { useSetRecoilState } from 'recoil'
-
-interface IpageInfo {
-  main: string
-  confirmButton: string
-}
-
-const PAGEINFO: IpageInfo[] = [
-  {
-    main: '즐겨찾기에 등록할까요?',
-    confirmButton: '추가',
-  },
-  {
-    main: '즐겨찾기를 취소할까요?',
-    confirmButton: '취소',
-  },
-]
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 const Modal = () => {
   const [modal, setModal] = useRecoilState(modalState)
   const setMovieList = useSetRecoilState(movieListState)
-  const [clickedMovie, setClickedMovie] = useRecoilState(clickedMovieState)
-  console.log(clickedMovie)
+  const clickedMovie = useRecoilValue(clickedMovieState)
 
   const handleCloseModal = () => {
     setModal(false)

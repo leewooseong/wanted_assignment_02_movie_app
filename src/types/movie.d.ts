@@ -20,18 +20,3 @@ export interface IMovieAPIErrorRes {
   Response: string
   Error: string
 }
-
-// Response Example
-// {
-//  Search: [
-//      {
-//          Title: "Dai 6 kai FNS no hi sûpâ supesharu 1 oku 2000 man nin no Heisei kyôiku terebi",
-//          Year: "1992",
-//          imdbID: "tt1517172",
-//          Type: "movie",
-//          Poster: "N/A"
-//      }
-//  ],
-//  totalResults: "1",
-//  Response: "True"
-// }
