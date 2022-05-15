@@ -1,9 +1,8 @@
 @use '/src/styles/constants/colors';
 
 .movieListCont {
-  //   height: 100%;
   margin-top: 54px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 
   & .movieList {
     display: flex;
@@ -17,10 +16,13 @@
 
   & .movieItem {
     position: relative;
-    width: 340px;
-    height: 120px;
+    width: 320px;
+    height: 115px;
+    margin: 5px;
     overflow: hidden;
     border-radius: 10px;
+    box-shadow: 0 0 11px rgba(33, 33, 33, 20%);
+    transition: all 0.2s;
 
     button {
       display: flex;
@@ -33,7 +35,9 @@
     img {
       width: 85px;
       height: 100%;
+      border: 1px solid colors.$GRAYE;
       border-radius: 10px;
+      box-shadow: 0 0 11px rgba(33, 33, 33, 20%);
     }
 
     .textInfo {
@@ -74,15 +78,27 @@
     }
 
     .movieListHeart {
-      width: 20px;
+      align-self: flex-start;
+      width: 15px;
+      height: 15px;
 
       & path {
-        fill: #aaaaaa;
+        fill: #ff3c79;
+        // fill: #aaaaaa;
       }
     }
+  }
+
+  & .movieItem:hover {
+    transform: translateY(-5px);
   }
 }
 
 .noResult {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   font-weight: bold;
+  text-align: center;
+  transform: translate(-50%, -50%);
 }

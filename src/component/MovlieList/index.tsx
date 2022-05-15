@@ -1,38 +1,66 @@
-import React, { SyntheticEvent } from 'react'
+import { SyntheticEvent, useEffect, useRef, useMemo, MouseEvent, forwardRef, LegacyRef, MutableRefObject } from 'react'
 
-import { useRecoilValue } from 'hooks/state'
+import store from 'storejs'
 
-import { movieListState } from '../../states/movie'
+import { useRecoilValue, useRecoilState, useSetRecoilState } from 'hooks/state'
+import {
+  movieListState,
+  searchWordState,
+  pageNumState,
+  modalState,
+  clickedMovieState,
+  loadingState,
+} from '../../states/movie'
+import { getMovieApi } from 'services/movie'
+import { isValidResponse } from 'utils/axios'
+
 import replaceImage from 'assets/pngs/no-image.png'
-import { HeartIcon } from 'assets/svgs/movie'
 import styles from './MovieList.module.scss'
+import { useGetData } from 'hooks'
+import { IMovieSearch } from 'types/movie'
+import { HeartIcon } from 'assets/svgs/movie'
 
-const MovieList = () => {
-  const movieList = useRecoilValue(movieListState)
-  console.log(movieList)
-  const handleImgError = (e: SyntheticEvent<HTMLImageElement, Event>) => {
+interface Params {
+  movieList: IMovieSearch[]
+}
+
+const MovieList = forwardRef<HTMLLIElement, Params>((props, ref) => {
+  const { movieList } = props
+  const setModal = useSetRecoilState(modalState)
+  const setClickedMovie = useSetRecoilState(clickedMovieState)
+  const handleImgError = (e: SyntheticEvent<HTMLImageElement>) => {
     e.currentTarget.src = replaceImage
   }
+
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    const clickedMovieIndex = Number(e.currentTarget.dataset.index)
+    setClickedMovie(movieList[clickedMovieIndex])
+    setModal(true)
+  }
+
   return (
     <div className={styles.movieListCont}>
       <ul className={styles.movieList}>
-        {movieList.map((value, index) => (
+        {movieList.map((movie, index) => (
           <li key={`movieList${index}`} className={styles.movieItem}>
-            <button type='button'>
-              <img src={value.Poster} onError={handleImgError} alt={`${value.Title}img`} />
+            <button type='button' onClick={handleClick} data-index={index}>
+              <img src={movie.Poster} onError={handleImgError} alt={`${movie.Title}img`} />
               <div className={styles.textInfo}>
-                <p className={styles.title}>{value.Title}</p>
-                <p className={styles.year}>{parseInt(value.Year, 10)}</p>
-                <p className={styles.imdbID}>{`IMBD: ${value.imdbID}`}</p>
+                <p className={styles.title}>{movie.Title}</p>
+                <p className={styles.year}>{parseInt(movie.Year, 10)}</p>
+                <p className={styles.imdbID}>{`IMBD: ${movie.imdbID}`}</p>
               </div>
-              <HeartIcon className={styles.movieListHeart} />
+              {movie.isFav && <HeartIcon className={styles.movieListHeart} />}
             </button>
           </li>
         ))}
+        <li ref={ref} />
       </ul>
-      {!movieList && <p className={styles.noResult}>검색 결과가 없습니다.</p>}
+      {!movieList.length && <p className={styles.noResult}>검색 결과가 없습니다.</p>}
     </div>
   )
-}
+})
+
+MovieList.displayName = 'MovieList'
 
 export default MovieList

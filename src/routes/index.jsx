@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import MovieFavorite from './MovieFavorite'
 import MovieSearch from './MovieSearch'
-import Navigation from '../component/Navigation'
 import styles from './Routes.module.scss'
 
 const App = () => {

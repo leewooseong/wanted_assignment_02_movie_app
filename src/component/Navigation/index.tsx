@@ -1,19 +1,20 @@
 import React from 'react'
-import { HomeIcon, HeartIcon } from 'assets/svgs/movie'
-import styles from './Navigation.module.scss'
 import { NavLink } from 'react-router-dom'
+import cx from 'classnames'
+
+import styles from './Navigation.module.scss'
 
 const Navigation = () => {
   return (
     <ul className={styles.navigation}>
       <li>
-        <NavLink to='/'>
-          <HomeIcon />
+        <NavLink to='/' className={({ isActive }) => cx(styles.navButton, { [styles.active]: isActive })}>
+          <p>Home</p>
         </NavLink>
       </li>
       <li>
-        <NavLink to='/favorite'>
-          <HeartIcon />
+        <NavLink to='/favorite' className={({ isActive }) => cx(styles.navButton, { [styles.active]: isActive })}>
+          <p>Favorite</p>
         </NavLink>
       </li>
     </ul>

@@ -1,6 +1,7 @@
 // https://github.com/axios/axios
 
 import axios, { AxiosError, AxiosResponse } from 'axios'
+import { IMovieAPIErrorRes, IMovieAPIRes } from 'types/movie'
 
 const { CancelToken } = axios
 const { isCancel } = axios
@@ -35,4 +36,9 @@ const isAxiosError = <E>(err: unknown | AxiosError<E>): err is AxiosError => {
   return axios.isAxiosError(err)
 }
 
-export { axios, instance, plainInstance, CancelToken, isCancel, isAxiosError }
+const isValidResponse = (axiosRes: IMovieAPIRes | IMovieAPIErrorRes): axiosRes is IMovieAPIRes => {
+  //   return (axiosRes as IMovieAPIRes).Response === 'True'
+  return axiosRes.Response === 'True'
+}
+
+export { axios, instance, plainInstance, CancelToken, isCancel, isAxiosError, isValidResponse }
